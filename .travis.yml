@@ -9,7 +9,7 @@ env:
     - "GIT_NAME=Travis CI build"
     - "GIT_EMAIL=info@opalkova18.cz"
     - "SOURCE_DIR=./_site"
-    - "DEPLOY_BRANCH=source"
+    - "DEPLOY_BRANCH=master"
     - "SSH_KEY=deploy.key"
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 
