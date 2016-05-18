@@ -40,7 +40,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'category.html')
       self.data['category'] = tag
 
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Kategorie: '
+      tag_title_prefix = site.config['tag_title_prefix'] || ''
       self.data['title'] = "#{tag_title_prefix}#{tag}"
     end
   end
