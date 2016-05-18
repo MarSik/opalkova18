@@ -1,0 +1,84 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: SVJ Opálkova 18
+email: vybor@opalkova18.cz
+description: > # this means to ignore newlines until "baseurl:"
+        Společenství vlastníků jednotek domu Opálkova 18,
+        Brno - Bystrc
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.opalkova18.cz" # the base hostname & protocol for your site
+twitter_username: 
+github_username:  MarSik
+
+cover: "/assets/header_image.jpg"
+logo: "/assets/logo.png"
+
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+  - scope:
+      path: "" # an empty string here means all files in the project
+      type: "pages" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "page"
+
+# Build settings
+gems:
+  - jekyll-paginate
+
+paginate: 6
+paginate_path: "/p:num/"
+markdown: kramdown
+exclude: [vendor, script, Gemfile, .travis.yml, .git]
+
+inter_post_navigation: false
+highlightjs_theme: "monokai_sublime"
+
+# Archive settings (see https://github.com/jekyll/jekyll-archives/)
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: 'archive'
+  permalinks:
+    category: '/category/:name/'
+    tag: '/tag/:name/'
+
+prose:
+  rooturl: '_posts'
+  siteurl: 'http://www.opalkova18.cz/'
+  media: 'assets'
+  ignore:
+    - index.html
+    - _config.yml
+    - /_layouts
+    - /_includes
+    - /script
+    - /_plugins
+    - /css
+    - /_scss
+  metadata:
+    _posts:
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Přidat nálepky"
+          placeholder: "Vybrat nálepky"
+          alterable: true
+          options:
+            - name: "Závada"
+              value: "zavada"
+            - name: "Informace"
+              value: "informace"
+            - name: "Pozvánka"
+              value: "pozvanka"
+

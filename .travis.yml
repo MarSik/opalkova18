@@ -1,0 +1,35 @@
+language: ruby
+rvm:
+- 2.1
+
+cache: bundler
+
+env:
+  global:
+    - "GIT_NAME=Travis CI build"
+    - "GIT_EMAIL=info@opalkova18.cz"
+    - "SOURCE_DIR=./_site"
+    - "DEPLOY_BRANCH=source"
+    - "SSH_KEY=deploy.key"
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+
+before_script:
+ - chmod +x ./script/cibuild # or do this locally and commit
+
+# Assume bundler is being used, therefore
+# the `install` step will run `bundle install` by default.
+script: ./script/cibuild
+
+# branch whitelist, only for GitHub Pages
+branches:
+  only:
+  - master
+  - /test-(.*)/ # test every branch which starts with "test-"
+
+sudo: false # route your build to the container-based infrastructure for a faster build
+
+after_success:
+  - openssl aes-256-cbc -K $encrypted_18bfbb31fb54_key -iv $encrypted_18bfbb31fb54_iv -in deploy.key.enc -out deploy.key -d
+  - echo www.opalkova18.cz > _site/CNAME
+  - bash script/deploy.sh
+
