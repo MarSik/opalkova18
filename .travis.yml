@@ -29,7 +29,7 @@ branches:
 sudo: false # route your build to the container-based infrastructure for a faster build
 
 after_success:
-  - openssl aes-256-cbc -K $encrypted_18bfbb31fb54_key -iv $encrypted_18bfbb31fb54_iv -in deploy.key.enc -out deploy.key -d
+  - openssl aes-256-cbc -K $encrypted_1547d22d82f1_key -iv $encrypted_1547d22d82f1_iv -in deploy.key.enc -out deploy.key -d
   - echo www.opalkova18.cz > _site/CNAME
   - bash script/deploy.sh
 
