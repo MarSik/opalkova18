@@ -31,7 +31,7 @@ defaults:
       type: "pages" # previously `post` in Jekyll 2.2.
     values:
       layout: "page"
-      icon: "circle-o"
+      icon: "fa-circle-o"
 
 # Build settings
 gems:
