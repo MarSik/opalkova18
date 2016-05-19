@@ -37,7 +37,7 @@ module Jekyll
     def render(context)
       if tag_contents = determine_arguments(@markup.strip)
         icon_class, icon_extra = tag_contents[0], tag_contents[1]
-        icon_tag(icon_class, icon_extra)
+        icon_tag(look_up(context, icon_class), icon_extra)
       else
         raise ArgumentError.new <<-eos
 Syntax error in tag 'icon' while parsing the following markup:
@@ -50,6 +50,17 @@ eos
     end
 
     private
+
+    def look_up(context, name)
+      lookup = context
+      name.split(".").each do |value|
+        lookup = lookup[value]
+	if lookup.nil?
+	  return name
+	end
+      end
+      lookup
+    end
 
     def determine_arguments(input)
       matched = input.match(/\A(\S+) ?(\S+)?\Z/)
