@@ -41,7 +41,7 @@ module Jekyll
       self.data['category'] = tag
 
       tag_title_prefix = site.config['tag_title_prefix'] || ''
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
+      self.data['title'] = "#{tag_title_prefix}#{tag}".capitalize
     end
   end
 
@@ -52,7 +52,7 @@ module Jekyll
       if site.layouts.key? 'category'
         dir = site.config['category_dir'] || ''
         site.categories.each_key do |tag|
-          site.pages << CatPage.new(site, site.source, File.join(dir, tag), tag.capitalize)
+          site.pages << CatPage.new(site, site.source, File.join(dir, tag), tag)
         end
       end
     end
