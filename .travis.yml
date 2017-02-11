@@ -1,8 +1,9 @@
 language: ruby
-rvm:
-- 2.2
 
 cache: bundler
+
+before_install:
+  - rvm install 2.2.5
 
 env:
   global:
