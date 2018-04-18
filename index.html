@@ -13,77 +13,46 @@ layout: default
 </div>
 
 <div class="wrapper">
-<ul class="post-list">
-  {% for post in paginator.posts %}
-  <li>
-    <h2>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{% icon post.icon %} {{ post.title }}</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
-      <div class="post-categories">
-      {% if post.categories.size > 0 %}v {% for cat in post.categories %}
-        {% if site.jekyll-archives %}
-        <a href="{{ site.baseurl }}/{{ cat }}/">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
-        {% else %}
-        <span>{{ cat | capitalize }}</span>{% if forloop.last == false %}, {% endif %}
-        {% endif %}
-      {% endfor %}{% endif %}
-      </div>
-    </section>
-  </li>
-  {% if forloop.last == false %}
-  <hr>
-  {% endif %}
-  {% endfor %}
-</ul>
-
-<nav class="pagination" role="navigation">
-  <p>
-    {% if paginator.next_page %}
-    <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.next_page}}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-    {% else %}
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-    </span>
-    {% endif %}
-    <span class="page-number">Strana {{ paginator.page }} z {{ paginator.total_pages }}</span>
-    {% if paginator.previous_page %}
-      {% if paginator.page == 2 %}
-      <a class="newer-posts" href="{% if site.baseurl %}{{ site.baseurl }}{% endif %}/">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-      {% else %}
-      <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.previous_page}}">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
+  <div class="row">
+    <h3 class="col col-sm-12">Kontakt</h3>
+    <address class="col col-sm-12 col-lg-6"><span class="fa fa-building"></span><br/>Společenství vlastníků Opálkova 18, Brno<br/>
+    Opálkova 759/18, Bystrc, 635 00 Brno</address>
+    <address class="col col-sm-12 col-lg-6"><span class="fa fa-envelope"></span><br/><a href="mailto:vybor@opalkova18.cz">vybor@opalkova18.cz</a></address>
+    <ul class="col col-sm-12 col-lg-6">
+    {% for social in site.social %}
+      {% if social.url != null %}
+      <li>
+        <a href="{{ social.url }}" title="{{ social.desc }}">
+          <i class="fa fa-{{ social.icon }}"></i>
+          <span class="username">{% if social.username %}{{ social.username }}{% else %}{{ social.name }}{% endif %}</span>
+        </a>
+      </li>
       {% endif %}
-    {% else %}
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-    </span>
-    {% endif %}
-  </p>
-  <p>
-    <a href="{{ site.baseurl }}/vse">Všechny příspěvky podle kategorie</a>
-  </p>
-</nav>
+    {% endfor %}
+    </ul>
+  </div>
+  <section class="row">
+  <div class="col col-sm-12 col-lg-4">
+    <h3>IČ: 29306809</h3>
 
+    <p>S 9117 vedená u Krajského soudu v Brně</p>
+  </div>
+  <div class="col col-sm-12 col-lg-4">
+    <h3>Rejstříky</h3>
+    <ul>
+      <li><a href="https://or.justice.cz/ias/ui/rejstrik-firma.vysledky?subjektId=195525&typ=PLATNY">platné údaje</a></li>
+      <li><a href="https://or.justice.cz/ias/ui/rejstrik-firma.vysledky?subjektId=195525&typ=UPLNY">kompletní historie</a></li>
+    </ul>
+  </div>
+  <div class="col col-sm-12 col-lg-4">
+    <h3>Listiny</h3>
+    <ul>
+      <li><a href="https://or.justice.cz/ias/content/download?id=1801fc2e24c64531936b98f0f20c76c9">stanovy</a></li>
+      <li><a href="https://or.justice.cz/ias/ui/vypis-sl-firma?subjektId=195525">všechny</a></li>
+    </ul>
+  </div>
+  </section>
 </div>
-</div>
+
+<!-- vim: sts=2 sw=2 et
+//-->
