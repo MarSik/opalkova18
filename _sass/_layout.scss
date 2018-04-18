@@ -85,12 +85,12 @@ pre code.hljs {
 		}
 	}
 	.scrim {
-		padding: 3em 1em;
+		padding: 2em 1em;
 		&.has-cover {
 			background-color: rgba(0,0,0,0.2);
-			padding: 6em 1em !important;
+			padding: 4em 1em !important;
 			@include media($tablet) {
-				padding: 9em 1em !important;
+				padding: 4em 1em !important;
 			}
 		}
 	}
@@ -349,7 +349,7 @@ pre code.hljs {
 .site-footer {
 	$link-color: $white;
 	margin-top: 2em;
-	padding: 1em 1em 2em 1em;
+	//padding: 1em 1em 2em 1em;
 	background-color: $highlight-color;
 	color: $white;
 	a {
